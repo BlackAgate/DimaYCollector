@@ -1,9 +1,10 @@
 # hipcollector
-Extended collector for Houdini. Tested in Houdini 19.5, 20.0 and 20.5
+Extended collector for Houdini. Tested in Houdini 19.5, 20.0 and 20.5.
+The collector is built as an internal tool for freelancers and outsource teams. With this collector one can easily collect the entire scene in a separate folder.
 
 The collector has two modes:
-1. **Collect to folder**. Collects all scene dependencies into the specified folder, and inside the scene changes all the paths, so they will be constructed from $HIP, if they hasn't already been. Copies updated scene to the same folder. The original scene does not change!
-2. **Collect to current HIP project.** Copies all scene dependencies to the current HIP scene folder and changes assosiated paths so they are constructed from $HIP if necessary. This operation changes the current scene but can be undone in one click (except the files remain copied).
+1. **Collect to folder**. Collects all scene dependencies into the specified folder, and inside the scene changes all the paths, so they will be constructed from $HIP, if they hasn't already been. Copies updated scene to the same folder. The original scene does not change! This mode is suitable for uploading a scene to a render farm, archiving a project, or giving it to another team. Another point is to have only necessary assets in a folder, in case you have a lot of unused ones in your HIP folder.
+2. **Collect to current HIP project.** Copies all scene dependencies to the current HIP scene folder and changes assosiated paths so they are constructed from $HIP if necessary. This operation changes the current scene but can be undone in one click (except the files remain copied). This mode is suitable when you work in a team cloud and want to be sure you don't have any files remain local.
 
 Features:
 - Collects all scene textures, alembics, bgeos etc.
