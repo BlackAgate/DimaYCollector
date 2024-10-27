@@ -22,7 +22,7 @@ Known restrictions / issues:
 - Only Windows tested
 - There is a known restriction for /out context: the collector will not read the Mantra outputs. It partitially supports Redshift_ROP nodes, but with random. I don't care about it though, as I never want to copy render files somewhere (and as compositing soft has its own collectors).
 - Sequences parse only within a project playbar frame range, change it accordingly if you need
-- Only references from nodes are supported (from node's parameters). If you have a custom geo attribute with a string reference stored inside (e.g. constructed in VEX or python), the collector will not see it.
+- Only references from nodes are supported (from node's parameters). If you built a custom string reference and stored it somewhere in geo attributes the collector will not see it.
 
 How to install:
 1. Download the connents of this repository as ZIO
