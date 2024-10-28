@@ -13,12 +13,14 @@ Features:
 - Works with filecache nodes in both constructed and explicit modes
 - Works with sequences
 - Works with UDIMs
+- Works with USD including recursive search of nested usds
 - Case-insensitive
 
 ![Screenshot 2024-10-27 162333](https://github.com/user-attachments/assets/1c89d5ba-6dc3-4c12-a6b0-c721ad2446ad)
+![usd](https://github.com/user-attachments/assets/922059d7-b569-4e1a-9d82-7f21166de704)
 
 Known restrictions / issues:
-- USD didn't tested and maybe doesn't work (thing to do — soon)
+- USD works but needs more testing
 - Only Windows tested
 - There is a known restriction for /out context: the collector will not read the Mantra outputs. It partitially supports Redshift_ROP nodes, but with random. I don't care about it though, as I never want to copy render files somewhere (and as compositing soft has its own collectors).
 - Sequences parse only within a project playbar frame range, change it accordingly if you need
@@ -30,3 +32,4 @@ How to install:
 3. Pick one file `DimaYCollector.json` from there and move it into packages folder of your houdini user directory (create it if it does not exist). The full path for example can look like `C:\Users\<USER>\Documents\houdini19.5\packages\DimaYCollector.json`
 4. After Houdini launch, find a new DimaYCollector shelf and a single tool "DimaYCollector" on it.
 5. Enjoy!
+
