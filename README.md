@@ -17,7 +17,7 @@ Features:
 - Case-insensitive
 
 ![Screenshot 2024-10-27 162333](https://github.com/user-attachments/assets/1c89d5ba-6dc3-4c12-a6b0-c721ad2446ad)
-![usd](https://github.com/user-attachments/assets/922059d7-b569-4e1a-9d82-7f21166de704)
+![usd](https://github.com/user-attachments/assets/61825593-da0a-4433-8438-14d9c8858031)
 
 Known restrictions / issues:
 - USD works but needs more testing
@@ -32,4 +32,3 @@ How to install:
 3. Pick one file `DimaYCollector.json` from there and move it into packages folder of your houdini user directory (create it if it does not exist). The full path for example can look like `C:\Users\<USER>\Documents\houdini19.5\packages\DimaYCollector.json`
 4. After Houdini launch, find a new DimaYCollector shelf and a single tool "DimaYCollector" on it.
 5. Enjoy!
-
