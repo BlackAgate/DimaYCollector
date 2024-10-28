@@ -16,7 +16,7 @@ Features:
 - Works with USD including recursive search of nested usds
 - Case-insensitive
 
-USD-parser module was obtained from the AGarifov Houdini Collector, thanks to him. The main idea of this collector was also inspired by his code, but the tool itself is completely different and new.
+USD-parser module was obtained from the Alexey Garifov Houdini Collector, thanks to him. The main idea of this collector was also inspired by his code, but the tool itself is completely different and new.
 
 ![Screenshot 2024-10-27 162333](https://github.com/user-attachments/assets/1c89d5ba-6dc3-4c12-a6b0-c721ad2446ad)
 ![usd](https://github.com/user-attachments/assets/61825593-da0a-4433-8438-14d9c8858031)
