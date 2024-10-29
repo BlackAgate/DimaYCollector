@@ -18,8 +18,8 @@ Features:
 
 USD-parser module was obtained from the Alexey Garifov Houdini Collector, thanks to him. The main idea of this collector was also inspired by his code, but the tool itself is completely different and new.
 
-Note: only references within the scene frame range will be parsed and copied. It means that if you have sequence 1-1000 and the frame range is 1-100, only 100 pictures will be copied. Adjust frame range correctly. Usually you'll need a full frame range of all your render nodes.
-Note2: collector will parse and copy renders from the OUT nodes by default. Delete them from list if you don't need them.
+- Note: only references within the scene frame range will be parsed and copied. It means that if you have sequence 1-1000 and the frame range is 1-100, only 100 pictures will be copied. Adjust frame range correctly. Usually you'll need a full frame range of all your render nodes.
+- Note2: collector will parse and copy renders from the OUT nodes by default. Delete them from list if you don't need them.
 ![Screenshot 2024-10-27 162333](https://github.com/user-attachments/assets/1c89d5ba-6dc3-4c12-a6b0-c721ad2446ad)
 ![usd](https://github.com/user-attachments/assets/61825593-da0a-4433-8438-14d9c8858031)
 
