@@ -1,4 +1,7 @@
 # hipcollector
+
+upd 30.10.2024: I fixed a rare bug with sequences when you had one node pointed to the full sequence and another node only to a one file from the sequence. This may raise an error, so I fixed it, now they process correctly
+
 Extended collector for Houdini. Tested in Houdini 19.5, 20.0 and 20.5.
 The collector is built as an internal tool for freelancers and outsource teams. With this collector one can easily collect the entire scene in a separate folder.
 
