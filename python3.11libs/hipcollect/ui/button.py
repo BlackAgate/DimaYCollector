@@ -2,6 +2,9 @@ from PySide2.QtWidgets import QToolButton, QStyle, QApplication, QPushButton, QT
 from PySide2.QtGui import QPalette, QColor, QIcon
 import os, hou
 import webbrowser
+import importlib
+
+from hipcollect.ui import utility
 
 class CollectFolderButton(QPushButton):
     def __init__(self, text, parent=None):
@@ -59,43 +62,27 @@ class ToolButton(QToolButton):
         self.setIcon(icon)
 
     def remove_item(self):
+        importlib.reload(utility)
         child = self.item
-        self.remove_all_linked_refs(child)
-        self.remove_all_linked_parms(child)
-   
-    def remove_all_linked_refs(self,item):
-        index_of_first_parent_parm = item.data(4,0)[0]
-        item_parm_from_index = self.tree_list_parms.itemFromIndex(index_of_first_parent_parm)
-        parm_stored_ref_indexes = item_parm_from_index.data(5,0)
-        childs = set()
-        for index in parm_stored_ref_indexes:
-            childs.add(self.tree_list.itemFromIndex(index))
-        for child in childs:
-            link = child.data(5,0) #get stored ref data
-            self.files.remove(link)
-            size = os.path.getsize(link)
-            self.tree_list.total_size -= size
-            self.root.update_total_size()
-            parent = child.parent()
-            while parent:
-                parent.removeChild(child)
-                if not parent.childCount():
-                    child = parent
-                    parent = child.parent()
-                else:
-                    parent = None
-        
-    def remove_all_linked_parms(self,item):
-        processed_parm_indexes = self.processed_parm_indexes
-        indexes = item.data(4,0)
-        for index in indexes:
-            index_string = str(index)
-            position = index_string.find(" at ")
-            index_string = index_string[:position]
-            if index_string not in processed_parm_indexes:
-                item_from_index = self.tree_list_parms.itemFromIndex(index)
-                self.processed_parm_indexes.add(index_string)
-                index_of_top_level = self.tree_list_parms.indexOfTopLevelItem(item_from_index)
+        indexes = child.data(4,0) #each reference stores a list of parameters pointing on it, here we read this list
+        if indexes is not None:
+            childs,parm_items = utility.return_connected_refs(self.tree_list,self.tree_list_parms,child,indexes)
+            for child in childs:
+                link = child.data(5,0) #get stored ref data
+                self.files.remove(link)
+                size = os.path.getsize(link)
+                self.tree_list.total_size -= size
+                self.root.update_total_size()
+                parent = child.parent()
+                while parent:
+                    parent.removeChild(child)
+                    if not parent.childCount():
+                        child = parent
+                        parent = child.parent()
+                    else:
+                        parent = None
+            for parm in parm_items:
+                index_of_top_level = self.tree_list_parms.indexOfTopLevelItem(parm)
                 self.tree_list_parms.takeTopLevelItem(index_of_top_level)
 
     def show_item(self):
@@ -123,28 +110,12 @@ class ToolButtonParm(QToolButton):
         self.setIcon(icon)
    
     def remove_parm(self):
+        importlib.reload(utility)
         item = self.item
-        self.remove_all_linked_parms(item)
-        self.remove_all_linked_refs(item)
-        
-    def remove_all_linked_parms(self,item):
-        index_of_first_child_ref = item.data(5,0)[0]
-        item_ref_from_index = self.tree_list.itemFromIndex(index_of_first_child_ref)
-        ref_stored_parm_indexes = item_ref_from_index.data(4,0)
-        for index in ref_stored_parm_indexes:
-            item_from_index = self.tree_list_parms.itemFromIndex(index)
-            index_of_top_level = self.tree_list_parms.indexOfTopLevelItem(item_from_index)
+        parm_items,childs = utility.return_connected_parms(self.tree_list,self.tree_list_parms,item)
+        for parm in parm_items:
+            index_of_top_level = self.tree_list_parms.indexOfTopLevelItem(parm)
             self.tree_list_parms.takeTopLevelItem(index_of_top_level)
-        
-    def remove_all_linked_refs(self,item):
-        self.tree_list.setUpdatesEnabled(False)
-        indexes = item.data(5,0)
-        childs = set()
-        for index in indexes: #find childs to delete
-            index_string = str(index)
-            position = index_string.find(" at ")
-            index_string = index_string[:position]
-            childs.add(self.tree_list.itemFromIndex(index))
         for child in childs: #performing deletion
             link = child.data(5,0) #get stored ref data
             self.tree_list.files.remove(link)
@@ -159,7 +130,6 @@ class ToolButtonParm(QToolButton):
                     parent = child.parent()
                 else:
                     parent = None
-        self.tree_list.setUpdatesEnabled(True)
 
     def show_parm(self):
         parm = self.link

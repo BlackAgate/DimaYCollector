@@ -6,7 +6,7 @@ import hou
 import importlib
 
 from hipcollect.ui import listview, listviewparms, button
-from hipcollect.ui.utility import get_human_readable
+from hipcollect.ui.utility import get_human_readable, return_connected_refs, return_connected_parms
 from hipcollect import saver, files_parser, hip_parser, usd_parser
 
 class SubmitDialog(QDialog):
@@ -89,34 +89,20 @@ class SubmitDialog(QDialog):
         self.size.update()
  
     def on_item_tree_list_clicked(self,item):
-        indexes = item.data(4,0)
+        indexes = item.data(4,0) #each reference stores a list of parameters pointing on it, here we read this list
         if indexes is not None:
-            index_of_first_parent_parm = indexes[0]
-            item_parm_from_index = self.tree_list_parms.itemFromIndex(index_of_first_parent_parm)
-            parm_stored_ref_indexes = item_parm_from_index.data(5,0)
-            for index in parm_stored_ref_indexes: #select all linked refs
-                child = self.tree_list.itemFromIndex(index)
+            childs,parm_items = return_connected_refs(self.tree_list,self.tree_list_parms,item,indexes)
+            for child in childs:
                 child.setSelected(1)
-            self.tree_list_parms.clearSelection()
-            for index in indexes: #select all linked parms
-                parm_item = self.tree_list_parms.itemFromIndex(index)
-                parm_item.setSelected(1)
-                self.tree_list_parms.scrollToItem(parm_item)
+            for parm in parm_items:
+                parm.setSelected(1)
         
     def on_item_tree_list_parms_clicked(self,item):
-        indexes = item.data(5,0)
-        index_of_first_child_ref = indexes[0]
-        item_ref_from_index = self.tree_list_parms.itemFromIndex(index_of_first_child_ref)
-        ref_stored_parm_indexes = item_ref_from_index.data(4,0)
-        for index in ref_stored_parm_indexes:
-            item_from_index = self.tree_list_parms.itemFromIndex(index)
-            item_from_index.setSelected(1)
-
-        self.tree_list.clearSelection()
-        for index in indexes:
-            list_item = self.tree_list.itemFromIndex(index)
-            list_item.setSelected(1)
-            self.tree_list.scrollToItem(list_item)
+        parm_items,refs = return_connected_parms(self.tree_list,self.tree_list_parms,item)
+        for parm in parm_items:
+            parm.setSelected(1)
+        for ref in refs:
+            ref.setSelected(1)
 
     def button_handle(self, tree_list_parms):
         button.ToolButtonParm.remove_parm(tree_list_parms,self.tree_list)
