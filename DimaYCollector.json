@@ -1,4 +1,4 @@
 {
 	"load_package_once": true,
-	"path": "$HOUDINI_PACKAGE_PATH/../DimaYCollector"
+	"path": "$HOUDINI_PACKAGE_PATH/../DimaYCollector-main"
 }
