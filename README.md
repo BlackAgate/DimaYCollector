@@ -35,7 +35,8 @@ Known restrictions / issues:
 
 How to install:
 1. Download the contents of this repository as ZIP
-2. Unzip the contents of the archive into your Houdini home folder (e.g. `C:\Users\<USER>\Documents\houdini19.5`) so as a result you will have `C:\Users\<USER>\Documents\houdini19.5\DimaYCollector`
-3. Pick one file `DimaYCollector.json` from there and move it into packages folder of your houdini user directory (create it if it does not exist). The full path for example can look like `C:\Users\<USER>\Documents\houdini19.5\packages\DimaYCollector.json`
-4. After Houdini launch, find a new DimaYCollector shelf and a single tool "DimaYCollector" on it.
-5. Enjoy!
+2. Unzip the contents of the archive into your Houdini home folder (e.g. `C:\Users\<USER>\Documents\houdini19.5`) so as a result you will have `C:\Users\<USER>\Documents\houdini19.5\hipcollector-main`
+3. **RENAME the folder hipcollector-main with DimaYCollector**
+4. Pick one file `DimaYCollector.json` from there and move it into packages folder of your houdini user directory (create it if it does not exist). The full path for example can look like `C:\Users\<USER>\Documents\houdini19.5\packages\DimaYCollector.json`
+5. After Houdini launch, find a new DimaYCollector shelf and a single tool "DimaYCollector" on it.
+6. Enjoy!
