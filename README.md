@@ -2,8 +2,8 @@
 
 **upd 03.12.2024:**
 _fixed two things:_
-1. _Fixed problem with copying files with "read only" attribute turned on_
-2. _Improved detecting parameter referencing algorithm so it will not try to change some custom expressions_
+1. _Fixed problem with copying files with "read only" attribute turned on (now it checks if file already exists and does not copy it)_
+2. _Improved detecting parameter referencing algorithm so it will not try to change some custom expressions (now it searches for "chs(*)" matches in a raw value of the parm)_
 
 Extended collector for Houdini. Tested in Houdini 19.5, 20.0 and 20.5.
 The collector is built as an internal tool for freelancers and outsource teams. With this collector one can easily collect the entire scene in a separate folder.
