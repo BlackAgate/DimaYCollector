@@ -26,5 +26,8 @@ def saver(refs,file_target_dir,mode):
                     refs_to_copy.add(ref)
     for ref in refs_to_copy:
         file_target_dir = file_target_dir.replace("\\", "/")
+        file_source = os.path.basename(ref)
+        final_file_check = file_target_dir+"/"+file_source
         os.makedirs(file_target_dir, exist_ok=True)
-        shutil.copy(ref, file_target_dir)
+        if not os.path.exists(final_file_check):
+            shutil.copy(ref, file_target_dir)

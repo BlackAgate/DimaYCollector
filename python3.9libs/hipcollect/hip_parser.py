@@ -1,5 +1,5 @@
 import hou
-import os
+import os, re
 import glob
 
 def get_parms():
@@ -14,6 +14,10 @@ def get_parms():
         if not parm or not parm.eval():
             continue
         if parm != parm.getReferencedParm(): #excludes references
+            continue
+        reference_pattern = r"chs(.)"
+        is_reference = re.search(reference_pattern,parm.rawValue())
+        if is_reference: #excludes references that are hidind inside chs patterns
             continue
         if parm.node().type().nameComponents()[2] == "filecache": #excludes filecache nodes because they were already got above
             continue
