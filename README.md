@@ -1,9 +1,9 @@
 # hipcollector
 
 **upd 03.12.2024:**
-fixed two things:
-1. Fixed problem with copying files with "read only" attribute turned on
-2. Improved detecting parameter referencing algorithm so it will not try to change some custom expressions
+_fixed two things:_
+1. _Fixed problem with copying files with "read only" attribute turned on_
+2. _Improved detecting parameter referencing algorithm so it will not try to change some custom expressions_
 
 Extended collector for Houdini. Tested in Houdini 19.5, 20.0 and 20.5.
 The collector is built as an internal tool for freelancers and outsource teams. With this collector one can easily collect the entire scene in a separate folder.
