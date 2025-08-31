@@ -1,6 +1,6 @@
 # hipcollector
 
-_Known problem: Vellum i/o, RBD i/o nodes can cause errors. Will be fixed soon_
+_Known problem: Vellum i/o, RBD i/o and similar nodes can cause errors. Will be fixed soon. Filecache and delete them before collecting as a workaround_
 
 **upd 03.12.2024:**
 _fixed two things:_
