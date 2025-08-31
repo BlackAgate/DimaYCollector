@@ -1,5 +1,7 @@
 # hipcollector
 
+_Known problem: Vellum i/o, RBD i/o nodes can cause errors. Will be fixed soon_
+
 **upd 03.12.2024:**
 _fixed two things:_
 1. _Fixed problem with copying files with "read only" attribute turned on (now it checks if file already exists and does not copy it)_
