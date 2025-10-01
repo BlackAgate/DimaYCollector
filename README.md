@@ -2,6 +2,7 @@
 
 _Known problems:
 Vellum i/o, RBD i/o and similar nodes can cause errors. Will be fixed soon. Filecache and delete them before collecting as a workaround_
+
 _Files from the scene root (where $HIP is placed) cause an error, don't place them in a root as a workaround — fixing soon_
 
 **upd 03.12.2024:**
