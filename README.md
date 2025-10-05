@@ -15,36 +15,36 @@ _fixed two things:_
 1. _Fixed problem with copying files with "read only" attribute turned on (now it checks if file already exists and does not copy it)_
 2. _Improved detecting parameter referencing algorithm so it will not try to change some custom expressions (now it searches for "chs(*)" matches in a raw value of the parm)_
 
-Extended collector for Houdini. Tested in Houdini 19.5, 20.0 and 20.5.
-The collector is built as an internal tool for freelancers and outsource teams. With this collector one can easily collect the entire scene in a separate folder.
+This is an extended scene collector for houdini. Extended means that it not only collects all files but also fixes all paths is a scene, so the collected scene is ready to open-and-work, no need to reassign assets! I use this collector on an ongoing basis. Tested in Houdini 19.0, 19.5, 20.0, 20.5.
 
 The collector has two modes:
-1. **Collect to folder**. Collects all scene dependencies into the specified folder and changes all the paths inside the scene, so they will be constructed from $HIP, if they hasn't already been. Copies updated scene to the same folder. **The original scene does not change!** This mode is suitable for uploading a scene to a render farm, archiving a project, or giving it to another team. Another point is to have only necessary assets in a folder, in case you have a lot of unused ones in your HIP folder.
-2. **Collect to current HIP project.** Copies all scene dependencies to the current HIP scene folder and changes assosiated paths so they are constructed from $HIP if necessary. This operation changes the current scene but can be undone in one click (except the files remain copied). This mode is suitable when you work in a team cloud and want to be sure you don't have any files remain local.
+1. **Collect to folder**. Collects all scene dependencies into the specified folder and changes all paths inside the scene, so they will be constructed from $HIP. Copies updated scene to the same folder. An original scene does not change. Use this mode for sending a scene to another computer or directory (uploading a scene to a render farm, archiving a project, giving it to another team).
+2. **Collect to current HIP project.** Copies all scene dependencies to a current HIP scene folder and changes assosiated paths so they are constructed from $HIP if necessary. Use this mode if you don't need to collect the whole project and just want to copy all necessary files into the current HIP folder.
 
 Features:
-- Collects all scene textures, alembics, bgeos etc.
-- Shows size of each element and a total size
-- Inspect, open and remove unnecessary references, sequences and parameters in one click from ui
+- Collect all scene textures, alembics, bgeos etc.
+- Check size of each element and a total size
+- Easy informative UI:
+  - manually remove assets or parameters from collecting (including one-click sequences)
+  - open asset folders or see source nodes
+  - see which node uses which reference
 - Works with filecache nodes in both constructed and explicit modes
 - Works with sequences
 - Works with UDIMs
 - Works with USD including recursive search of nested usds
 - Case-insensitive
 
-USD-parser module was obtained from the Alexey Garifov Houdini Collector, thanks to him. The main idea of this collector was also inspired by his code, but the tool itself is completely different and new.
+USD-parser module was obtained from the Alexey Garifov Houdini Collector, thanks to him.
 
-- Note: only references within the scene frame range will be parsed and copied. It means that if you have sequence 1-1000 and the frame range is 1-100, only 100 pictures will be copied. Adjust frame range correctly. Usually you'll need a full frame range of all your render nodes.
-- Note2: collector will parse and copy renders from the OUT nodes by default. Delete them from list if you don't need them.
+- Note: when working with frame-dependent sequences (usually constructed from $F) only references within the scene frame range will be parsed and copied. For example you have a JPEG file sequence with a range 1-1000 and a scene frame range is 1-100, then only 100 JPEGs will be copied (don't expect the collector to copy an unused part of a sequence). Adjust frame range in necessary. Usually you need a full frame range of all your render nodes.
+- Note2: collector will try to parse and copy from the OUT context by default. Usually you don't need this, so just remove them from a list manually, or delete these nodes before collecting to save parsing time
 ![Screenshot 2024-10-27 162333](https://github.com/user-attachments/assets/1c89d5ba-6dc3-4c12-a6b0-c721ad2446ad)
 ![usd](https://github.com/user-attachments/assets/61825593-da0a-4433-8438-14d9c8858031)
 
 Known restrictions / issues:
-- USD works but needs more testing
 - Only Windows tested
-- There is a known restriction for /out context: the collector will not read the Mantra outputs. It partitially supports Redshift_ROP nodes, but with random. I don't care about it though, as I never want to copy render files somewhere (and as compositing soft has its own collectors).
-- Sequences parse only within a project playbar frame range, change it accordingly if you need
-- Only references from nodes are supported (from node's parameters). If you built a custom string reference and stored it somewhere in geo attributes the collector will not see it.
+- There is a known restriction/bug for /out context: sometimes Mantra and Redshift ROP nodes are not parsed. But it's not a real problem because usually you don't need them.
+- Only parameter references supported (like in a normal pipeline, no custom VEX path attributes existing only in a code).
 
 How to install:
 1. Download the contents of this repository as ZIP
