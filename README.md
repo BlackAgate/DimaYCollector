@@ -1,6 +1,7 @@
 # hipcollector
 
 **upd 05.10.2025:**
+
 _added:_
 Console verbose added (currently processing item)
 
@@ -9,6 +10,7 @@ _fixed:_
 2. Fixed a small error case with Filecache nodes in an explicit mode.
 
 **upd 03.12.2024:**
+
 _fixed two things:_
 1. _Fixed problem with copying files with "read only" attribute turned on (now it checks if file already exists and does not copy it)_
 2. _Improved detecting parameter referencing algorithm so it will not try to change some custom expressions (now it searches for "chs(*)" matches in a raw value of the parm)_
