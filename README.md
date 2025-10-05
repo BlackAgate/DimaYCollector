@@ -1,9 +1,12 @@
 # hipcollector
 
-_Known problems:
-Vellum i/o, RBD i/o and similar nodes can cause errors. Will be fixed soon. Filecache and delete them before collecting as a workaround_
+**upd 05.10.2025:**
+_added:_
+Console verbose added (currently processing item)
 
-_Files from the scene root (where $HIP is placed) cause an error, don't place them in a root as a workaround — fixing soon_
+_fixed:_
+1. The collector now correctly collects files from the scene root (where the $HIP lays). In the previous version it caused an error, fixed now.
+2. Fixed a small error case with Filecache nodes in an explicit mode.
 
 **upd 03.12.2024:**
 _fixed two things:_
