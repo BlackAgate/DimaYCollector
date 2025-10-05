@@ -6,7 +6,7 @@ _added:_
 Console verbose added (currently processing item)
 
 _fixed:_
-1. The collector now correctly collects files from the scene root (where the $HIP lays). In the previous version it caused an error, fixed now.
+1. The collector now correctly collects files from the scene very root (where the $HIP lays). In a previous version it caused an error, fixed now.
 2. Fixed a small error case with Filecache nodes in an explicit mode.
 
 **upd 03.12.2024:**
