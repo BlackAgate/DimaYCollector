@@ -126,6 +126,10 @@ class SubmitDialog(QDialog):
                         importlib.reload(files_parser)
                         item = self.tree_list_parms.topLevelItem(i)
                         parm = item.data(4,0)
+                        
+                        # temp: verbose current processing items
+                        print ("processing",parm.node().path())
+                        
                         if "filecache" in parm.node().type().nameComponents()[2]:
                             files_parser.filecache_parse(parm,item,target_dir,mode,self.tree_list)
                         else: #all other nodes except filecache

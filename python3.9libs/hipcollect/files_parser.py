@@ -9,6 +9,7 @@ def filecache_parse(parm,item,target_dir,mode,tree_list):
     filemethod = filecache_node.parm("filemethod").eval()
     ref_indexes = item.data(5,0)
     refs = set()
+        
     for index in ref_indexes:
         ref_item = tree_list.itemFromIndex(index)
         ref = ref_item.data(5,0)
@@ -41,6 +42,7 @@ def filecache_parse(parm,item,target_dir,mode,tree_list):
     else: #if explicit filecache
         ref_temp = filecache_node.parm("file").eval()
         unexpanded_ref = filecache_node.parm("file").unexpandedString()
+        collapsed_ref = hou.text.collapseCommonVars(ref_temp,vars=["$HIP"])
         if "$HIP" in collapsed_ref:
             file_dir = os.path.dirname(collapsed_ref)
             file_dir = file_dir[4:]
@@ -77,7 +79,11 @@ def allfiles_parse(parm,item,target_dir,mode,tree_list):
         if "$HIP" in collapsed_ref:
             if "$HIP" in unexpanded_ref:
                 file_dir = os.path.dirname(collapsed_ref)[4:].lower()
-                file_target_dir = os.path.join(target_dir,clean_dirname(file_dir))
+                file_target_dir = ""
+                if file_dir:
+                    file_target_dir = os.path.join(target_dir,clean_dirname(file_dir))
+                else:
+                    file_target_dir = target_dir
                 saver.saver(refs,file_target_dir,mode)
             else:
                 basename = os.path.basename(unexpanded_ref)
