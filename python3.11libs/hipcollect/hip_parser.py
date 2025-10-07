@@ -36,6 +36,16 @@ def ref_convert(parm, frame, path=None): #frame by frame
                 valid = 0
             else:
                 ref = ref.replace("\\", "/")
+                
+                #convert udim to sequence
+                start_frame = int(hou.playbar.frameRange()[0])
+                udim_to_frame = frame-start_frame+1001
+                ref = ref.replace("<udim>",str(udim_to_frame))
+                #print ("udim converted to",udim_to_frame)
+                
+                #check if udim exists in a new frame
+                if not os.path.isfile(ref):
+                    valid = 0
         else:
             valid = 0
     return ref, valid

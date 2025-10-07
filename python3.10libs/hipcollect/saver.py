@@ -7,11 +7,12 @@ def saver(refs,file_target_dir,mode):
     refs_to_copy = set()
     if mode == "folder":
         for ref in refs:
-            if "<udim>" in ref:
-                for udim in glob.glob(ref.replace("<udim>", "*")):
-                    refs_to_copy.add(udim)
-            else:
-                refs_to_copy.add(ref)
+            # if "<udim>" in ref:
+                # for udim in glob.glob(ref.replace("<udim>", "*")):
+                    # refs_to_copy.add(udim)
+            # else:
+                # refs_to_copy.add(ref)
+            refs_to_copy.add(ref)
     else:
         for ref in refs:
             if "<udim>" in ref:
