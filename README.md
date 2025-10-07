@@ -63,13 +63,13 @@ How to install:
 _On Collector icon clicking:_
 
 1. It founds all parameters with references in each frame, check if they are valid ((main.py, houdini_parser.py, hip_parser.py)
-2. Then transfer a list to a QT-module and build a list with these parameters (main.py, dialog.py, listviewparms.py)
-3. Takes each parameter, search for references from it in each frame, creates a second list and fills it with these references, so every reference stores an original parameter in a custom data (main.py, dialog.py, listview.py, usd_parser.py)
+2. Transfers a list of all found parameters to a QT-module and build a parameter list there (main.py, dialog.py, listviewparms.py)
+3. Takes each parameter, searches for references from it in each frame, creates a second list and fills it with these references. Every reference also stores an original parameter in custom data (main.py, dialog.py, listview.py, usd_parser.py)
 4. Creates additional handles: remove and inspect buttons, connects two lists with each other (button.py, utility.py)
 
 _On "Collect to folder" button clicking:_
 
-1. Sequentially starts processing every found parameter from a first list and gets a list of references from each parameter again (dialog.py, files_parser.py)
+1. Starts processing every found parameter from a first list and gets a full list of references from them (dialog.py, files_parser.py)
 2. Process through the references and decides for each reference which folders to create and which files to copy (files_parser.py)
 3. If necessary, changes a path in the connected to the reference parameter, so it points to a new folder (files_parser.py)
 4. Copies files to new folders (saver.py)
