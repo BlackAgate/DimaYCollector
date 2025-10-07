@@ -52,7 +52,7 @@ Known restrictions / issues:
 - There is a known restriction/bug for /out context: sometimes Mantra and Redshift ROP nodes are not parsed. But it's not a real problem because usually you don't need them.
 - Only parameter references supported (like in a normal pipeline, no custom VEX path attributes existing only in a code).
 
-How to install:
+**How to install:**
 1. Download the contents of this repository as ZIP
 2. Unzip the contents of the archive into your Houdini home folder (e.g. `C:\Users\<USER>\Documents\houdini19.5`) so as a result you will have `C:\Users\<USER>\Documents\houdini19.5\DimaYCollector-main`
 4. Pick one file `DimaYCollector.json` from there and move it into packages folder of your houdini user directory (create it if it does not exist). The full path for example can look like `C:\Users\<USER>\Documents\houdini19.5\packages\DimaYCollector.json`
