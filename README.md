@@ -3,6 +3,7 @@
 **upd 07.10.2025:**
 
 _fixed_: small case with UDIMs selection list (now it treats them as a sequence)
+
 added a description of how the collector works internally (check at the end of this file)
 
 **upd 05.10.2025:**
