@@ -67,6 +67,7 @@ _On Collector icon clicking:_
 2. Transfers a list of all found parameters to a QT-module and build a parameter list there (main.py, dialog.py, listviewparms.py)
 3. Takes each parameter, searches for references from it in each frame, creates a second list and fills it with these references. Every reference also stores an original parameter in custom data (main.py, dialog.py, listview.py, usd_parser.py)
 4. Creates additional handles: remove and inspect buttons, connects two lists with each other (button.py, utility.py)
+   
 Now we have a double list: all references are on the left and all connected parameters are on the right. We can check which references belongs to which parameter and vice versa.
 
 _On "Collect to folder" button clicking:_
