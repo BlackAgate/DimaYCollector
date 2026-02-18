@@ -1,7 +1,6 @@
 # hipcollector
 
-- 18.02.2026 — Added Houdini 21 support
-Added H21 support for QT6, which is default now. If you are using Houdini 21 with old QT5, you can pick a 20.5 version from the release/20.5 — it will work.
+- 18.02.2026 — Added Houdini 21 support for QT6, which is default now. If you are using Houdini 21 with old QT5, you can pick a 20.5 version from the release/20.5 — it will work.
 
 - 07.10.2025
 
