@@ -1,12 +1,15 @@
 # hipcollector
 
-**upd 07.10.2025:**
+- 18.02.2026 — Added Houdini 21 support
+Added H21 support for QT6, which is default now. If you are using Houdini 21 with old QT5, you can pick a 20.5 version from the release/20.5 — it will work.
+
+- 07.10.2025
 
 _fixed_: small case with UDIMs selection list (now it treats them as a sequence)
 
 added a description of how the collector works internally (check at the end of this file)
 
-**upd 05.10.2025:**
+ - 05.10.2025
 
 _added:_
 Console verbose added (currently processing item)
@@ -15,7 +18,7 @@ _fixed:_
 1. The collector now correctly collects files from the scene very root (where the $HIP lays). In a previous version it caused an error, fixed now.
 2. Fixed a small error case with Filecache nodes in an explicit mode.
 
-**upd 03.12.2024:**
+- 03.12.2024
 
 _fixed two things:_
 1. _Fixed problem with copying files with "read only" attribute turned on (now it checks if file already exists and does not copy it)_
