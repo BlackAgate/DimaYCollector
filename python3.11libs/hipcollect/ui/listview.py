@@ -2,7 +2,7 @@ import glob
 import os, hou
 import importlib
 
-from PySide2.QtWidgets import QTreeWidget, QHeaderView, QTreeWidgetItem
+from PySide6.QtWidgets import QTreeWidget, QHeaderView, QTreeWidgetItem
 
 from hipcollect.ui import button
 from hipcollect.ui.utility import get_human_readable

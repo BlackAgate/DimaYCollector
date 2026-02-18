@@ -1,5 +1,6 @@
 import hou
-from PySide2.QtWidgets import QTreeWidget, QHeaderView, QTreeWidgetItem
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QTreeWidget, QHeaderView, QTreeWidgetItem
 from hipcollect.ui import button
 import importlib
 
@@ -51,5 +52,5 @@ class CustomListViewParms(QTreeWidget):
             self.setItemWidget(new_child, 2, show_button)
             
         self.resizeColumnToContents(0)
-        self.sortByColumn(0)
+        self.sortByColumn(0,Qt.AscendingOrder)
         self.setSortingEnabled(1)

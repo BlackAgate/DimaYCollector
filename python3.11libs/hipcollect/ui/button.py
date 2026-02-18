@@ -1,5 +1,5 @@
-from PySide2.QtWidgets import QToolButton, QStyle, QApplication, QPushButton, QToolTip
-from PySide2.QtGui import QPalette, QColor, QIcon
+from PySide6.QtWidgets import QToolButton, QStyle, QApplication, QPushButton, QToolTip
+from PySide6.QtGui import QPalette, QColor, QIcon
 import os, hou
 import webbrowser
 import importlib

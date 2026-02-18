@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from PySide2.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QSplitter
+from PySide6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QSplitter
 import hou
 import importlib
 

@@ -1,7 +1,7 @@
 import importlib
 from hipcollect import houdini_parser
 from hipcollect.ui import dialog
-from PySide2 import QtCore
+from PySide6 import QtCore
 import hou
 
 def run():   
