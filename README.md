@@ -1,5 +1,8 @@
 # hipcollector
 
+**Houdini 21.0: download from "Main"
+Houdini 20.5 and lower: download from "release/20.5"**
+
 - 18.02.2026 — Added Houdini 21 support for QT6, which is default now. If you are using Houdini 21 with old QT5, you can pick a 20.5 version from the release/20.5 — it will work.
 
 - 07.10.2025
